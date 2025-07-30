@@ -1,0 +1,17 @@
+/* * {
+  border: solid green 1px;
+} */
+
+.main {
+  width: 90%;
+  border: red solid 1px;
+}
+
+.vanImg {
+  width:100%;
+}
+
+.text {
+  display: flex;
+  justify-content: space-between;
+}

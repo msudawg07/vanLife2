@@ -1,0 +1,13 @@
+.main {
+  color: aliceblue;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  background-color: antiquewhite;
+  flex-grow: 1;
+  background-image: url("https://images.pexels.com/photos/358532/pexels-photo-358532.jpeg");
+  background-size: cover; /* Scale the image to cover the entire container */
+  background-position: center; /* Center the image within the container */
+  background-repeat: no-repeat;
+}
