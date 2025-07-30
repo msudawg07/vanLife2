@@ -15,6 +15,13 @@ app.get('/api/tasks', (req, res) => {
   });
 });
 
+app.get('/api/vans/:id', (req, res) => {
+  const id = req.params.id;
+  db.get('SELECT * FROM vans WHERE id = ?', [id], (err, row) => {
+    res.json(row)
+  })
+})
+
 // app.get('/api/tasks', (req, res) => {
 //   res.json('SUPPP')
 // })
