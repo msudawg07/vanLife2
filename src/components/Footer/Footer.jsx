@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom'
 
 export default function Footer() {
   return (
-    <nav className='footer'>
+    <nav className={s.footer}>
       <div>@2025 #VANLIFE</div>
     </nav>
   )

@@ -1,4 +1,4 @@
-.nav-top {
+/* .nav-top {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -6,9 +6,9 @@
   background-color: #FFF7ED;
   height: 10%;
   flex-shrink: 0;
-}
+} */
 
-.nav-vanlife {
+/* .nav-vanlife {
   color: black;
   font-size: 2rem;
   font-weight: 900;
@@ -23,14 +23,14 @@
 .footer {
   background-color: #252525;
   color: white;
-  /* margin-top: auto; */
+  margin-top: auto;
   flex-shrink: 0;
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 10px 30px;
   height: 10%;
-}
+} */
 
 
 

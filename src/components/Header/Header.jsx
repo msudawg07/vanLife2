@@ -1,14 +1,19 @@
 import s from './Header.module.css'
-import {Link} from 'react-router-dom'
+import {Link, NavLink} from 'react-router-dom'
 
 export default function Header() {
+
+  function navFocus({isActive}) {
+    return isActive ? s.navfocus : s.navNoFocus
+  }
+
   return (
-    <nav className='nav-top'>
-      <div><Link to='/' className='nav-vanlife'>#VANLIFE</Link></div>
-      <div className='nav-right'>
-        <Link to='/host'>Host</Link>
-        <Link to='/about'>About</Link>
-        <Link to='/vans'>Vans</Link>
+    <nav className={s.navTop}>
+      <div><Link to='/' className={s.navVanLife}>#VANLIFE</Link></div>
+      <div className={s.navRight}>
+        <NavLink className={navFocus} to='/host'>Host</NavLink>
+        <NavLink className={navFocus} to='/about'>About</NavLink>
+        <NavLink className={navFocus} to='/vans'>Vans</NavLink>
       </div>
     </nav>
   )
