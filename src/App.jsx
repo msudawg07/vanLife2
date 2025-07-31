@@ -5,6 +5,11 @@ import Home from './components/Home/Home'
 import About from './components/About/About'
 import Vans from './components/Vans/Vans'
 import VanPage from './components/VanPage/VanPage'
+import Layout from './components/Layout/Layout'
+import HostPageLayout from './components/Host/HostPageLayout'
+import Dashboard from './components/Host/Dashboard'
+import Income from './components/Host/Income'
+import Reviews from './components/Host/Reviews'
 
 function App() {
   const [vans, setVans] = useState([])
@@ -19,22 +24,21 @@ function App() {
 
   return (
     <BrowserRouter>
-      <nav className='nav-top'>
-        <div><Link to='/' className='nav-vanlife'>#VANLIFE</Link></div>
-        <div className='nav-right'>
-          <Link to='/about'>About</Link>
-          <Link to='/vans'>Vans</Link>
-        </div>
-      </nav>
+
       <Routes>
-        <Route path='/' element={<Home />} />
-        <Route path='/about' element={<About />} />
-        <Route path='/vans' element={<Vans vansData={vans} loading={loading}/>} />
-        <Route path='/vans/:id' element={<VanPage />} />
+        <Route path='/' element={<Layout />}>
+          <Route index element={<Home />} />
+          <Route path='about' element={<About />} />
+          <Route path='vans' element={<Vans vansData={vans} loading={loading}/>} />
+          <Route path='vans/:id' element={<VanPage />} />
+
+          <Route path='host' element={<HostPageLayout />}>
+            <Route index element={<Dashboard />} />
+            <Route path='income' element={<Income />} />
+            <Route path='reviews' element={<Reviews />} />
+          </Route>
+        </Route>
       </Routes>
-      <nav className='footer'>
-        <div>@2025 #VANLIFE</div>
-      </nav>
     </BrowserRouter>
   )
 }

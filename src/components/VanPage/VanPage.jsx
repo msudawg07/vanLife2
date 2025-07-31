@@ -19,7 +19,7 @@ export default function VanPage() {
       <img src={vanData.imageUrl}></img>
       <div>{vanData.type}</div>
       <h1>{vanData.name}</h1>
-      <div>{vanData.price}</div>
+      <div>${vanData.price}/day</div>
       <p>{vanData.description}</p>
       <Link to='/vans'><button>Rent this van</button></Link>
     </main>
