@@ -9,6 +9,8 @@ import Layout from './components/Layout/Layout'
 import HostPageLayout from './components/Host/HostPageLayout'
 import Dashboard from './components/Host/Dashboard'
 import Income from './components/Host/Income'
+import HostVans from './components/Host/HostVans'
+import HostVanDetails from './components/Host/HostVanDetails'
 import Reviews from './components/Host/Reviews'
 
 function App() {
@@ -16,7 +18,7 @@ function App() {
   const [loading, setLoading] = useState(true) //use this for loading screen if necessaary - for now vansData is working in Vans.jsx
 
   useEffect(() => {
-    fetch('http://localhost:3001/api/tasks')
+    fetch('http://localhost:3001/api/vans')
     .then(res => res.json())
     .then(data => setVans(data))
     setLoading(false)
@@ -35,6 +37,12 @@ function App() {
           <Route path='host' element={<HostPageLayout />}>
             <Route index element={<Dashboard />} />
             <Route path='income' element={<Income />} />
+            <Route path='vans' element={<HostVans vansData={vans}/>} />
+            <Route path='vans/:id' element={<HostVanDetails vansData={vans}/>} >
+              <Route index></Route>
+              <Route path='pricing'></Route>
+              <Route path='photos'></Route>
+            </Route>
             <Route path='reviews' element={<Reviews />} />
           </Route>
         </Route>

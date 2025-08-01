@@ -8,7 +8,7 @@ const PORT = 3001;
 app.use(cors());
 app.use(express.json());
 
-app.get('/api/tasks', (req, res) => {
+app.get('/api/vans', (req, res) => {
   db.all('SELECT * FROM vans', [], (err, rows) => {
     if (err) return res.status(500).json({ error: err.message });
     res.json(rows);

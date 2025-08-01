@@ -19,54 +19,63 @@ db.serialize(() => {
 
 //test van data
 let arr = [
-  { name: "Modest Explorer", price: 60, description: "The Modest Explorer is a van designed to get you out of the house and into nature. This beauty is equipped with solar panels, a composting toilet, a water tank and kitchenette. The idea is that you can pack up your home and escape for a weekend or even longer!", imageUrl: "https://assets.scrimba.com/advanced-react/react-router/modest-explorer.png", type: "simple" },
-  { name: "Beach Bum", price: 80, description: "Beach Bum is a van inspired by surfers and travelers. It was created to be a portable home away from home, but with some cool features in it you won't find in an ordinary camper.", imageUrl: "https://assets.scrimba.com/advanced-react/react-router/beach-bum.png", type: "rugged" },
-  { name: "Reliable Red", price: 100, description: "Reliable Red is a van that was made for travelling. The inside is comfortable and cozy, with plenty of space to stretch out in. There's a small kitchen, so you can cook if you need to. You'll feel like home as soon as you step out of it.", imageUrl: "https://assets.scrimba.com/advanced-react/react-router/reliable-red.png", type: "luxury" },
-  { name: "Dreamfinder", price: 65, description: "Dreamfinder is the perfect van to travel in and experience. With a ceiling height of 2.1m, you can stand up in this van and there is great head room. The floor is a beautiful glass-reinforced plastic (GRP) which is easy to clean and very hard wearing. A large rear window and large side windows make it really light inside and keep it well ventilated.", imageUrl: "https://assets.scrimba.com/advanced-react/react-router/dreamfinder.png", type: "simple" },
-  { name: "The Cruiser", price: 120, description: "The Cruiser is a van for those who love to travel in comfort and luxury. With its many windows, spacious interior and ample storage space, the Cruiser offers a beautiful view wherever you go.", imageUrl: "https://assets.scrimba.com/advanced-react/react-router/the-cruiser.png", type: "luxury" },
-  { name: "Green Wonder", price: 70, description: "With this van, you can take your travel life to the next level. The Green Wonder is a sustainable vehicle that's perfect for people who are looking for a stylish, eco-friendly mode of transport that can go anywhere.", imageUrl: "https://assets.scrimba.com/advanced-react/react-router/green-wonder.png", type: "rugged" }
+  { name: "Modest Explorer", price: 60, description: "The Modest Explorer is a van designed to get you out of the house and into nature. This beauty is equipped with solar panels, a composting toilet, a water tank and kitchenette. The idea is that you can pack up your home and escape for a weekend or even longer!", imageUrl: "https://assets.scrimba.com/advanced-react/react-router/modest-explorer.png", type: "simple", hostid:47  },
+  { name: "Beach Bum", price: 80, description: "Beach Bum is a van inspired by surfers and travelers. It was created to be a portable home away from home, but with some cool features in it you won't find in an ordinary camper.", imageUrl: "https://assets.scrimba.com/advanced-react/react-router/beach-bum.png", type: "rugged", hostid: 47 },
+  { name: "Reliable Red", price: 100, description: "Reliable Red is a van that was made for travelling. The inside is comfortable and cozy, with plenty of space to stretch out in. There's a small kitchen, so you can cook if you need to. You'll feel like home as soon as you step out of it.", imageUrl: "https://assets.scrimba.com/advanced-react/react-router/reliable-red.png", type: "luxury", hostid: 74 },
+  { name: "Dreamfinder", price: 65, description: "Dreamfinder is the perfect van to travel in and experience. With a ceiling height of 2.1m, you can stand up in this van and there is great head room. The floor is a beautiful glass-reinforced plastic (GRP) which is easy to clean and very hard wearing. A large rear window and large side windows make it really light inside and keep it well ventilated.", imageUrl: "https://assets.scrimba.com/advanced-react/react-router/dreamfinder.png", type: "simple", hostid: 77 },
+  { name: "The Cruiser", price: 120, description: "The Cruiser is a van for those who love to travel in comfort and luxury. With its many windows, spacious interior and ample storage space, the Cruiser offers a beautiful view wherever you go.", imageUrl: "https://assets.scrimba.com/advanced-react/react-router/the-cruiser.png", type: "luxury", hostid:77 },
+  { name: "Green Wonder", price: 70, description: "With this van, you can take your travel life to the next level. The Green Wonder is a sustainable vehicle that's perfect for people who are looking for a stylish, eco-friendly mode of transport that can go anywhere.", imageUrl: "https://assets.scrimba.com/advanced-react/react-router/green-wonder.png", type: "rugged", hostid: 77 }
 ]
 
 //loop through test van data and add each van to db
-function addVanData() {
-  arr.forEach(vanData => {
-    db.run(
-      `INSERT INTO vans (name, price, description, imageUrl, type) VALUES (?, ?, ?, ?, ?)`,
-      [vanData.name, vanData.price, vanData.description, vanData.imageUrl, vanData.type],
-      function(err) {
-        if (err) {
-          return console.error(err.message);
-        }
-        console.log(`A new van has been added with ID ${this.lastID}`);
-      }
-    );
-  })
-}
+// function addVanData() {
+//   arr.forEach(vanData => {
+//     db.run(
+//       `INSERT INTO vans (name, price, description, imageUrl, type) VALUES (?, ?, ?, ?, ?)`,
+//       [vanData.name, vanData.price, vanData.description, vanData.imageUrl, vanData.type],
+//       function(err) {
+//         if (err) {
+//           return console.error(err.message);
+//         }
+//         console.log(`A new van has been added with ID ${this.lastID}`);
+//       }
+//     );
+//   })
+// }
 
 // addVanData()
 
+// db.run(`ALTER TABLE vans ADD COLUMN hostId TEXT`);
+
+
+
 
 // Test table in database
-db.serialize(() => {
-  db.run(`
-    CREATE TABLE IF NOT EXISTS tasks (
-      id INTEGER PRIMARY KEY AUTOINCREMENT,
-      name TEXT NOT NULL
-    )
-  `);
-});
+// db.serialize(() => {
+//   db.run(`
+//     CREATE TABLE IF NOT EXISTS tasks (
+//       id INTEGER PRIMARY KEY AUTOINCREMENT,
+//       name TEXT NOT NULL
+//     )
+//   `);
+// });
 
-// db.run(
-//   "INSERT INTO tasks (name) VALUES (?)",
-//   ['Do the dishes'],
-//   function (err) {
-//     if (err) {
-//       return console.error(err.message);
+
+// db.all('Select * from vans', [], (err, rows) => {
+//   rows.forEach(row => {
+//     let host;
+//     if(row.price == 60 || row.price == 80) {
+//       host = 47
+//     } else if(row.price == 100) {
+//       host = 74
+//     } else {
+//       host = 77
 //     }
-//     console.log(`New task added with ID ${this.lastID}`);
-//   }
-// );
-// Test table in database
+
+//       db.run("update vans set hostid = ? WHERE id = ?", [host, row.id])
+
+//   })
+// })
 
 
 

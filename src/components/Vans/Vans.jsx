@@ -15,7 +15,6 @@ export default function Vans({vansData}) {
     )
   }
 
-
     const vans = vansData.map(van => {
       return (
         <Van
