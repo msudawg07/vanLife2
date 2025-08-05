@@ -2,7 +2,6 @@ import {Link, useParams} from 'react-router-dom'
 import s from "./HostVans.module.css"
 
 export default function HostVans({vansData}) {
-  console.log()
   // let hostid = 47 // I just hardcoded it below for now
   let hostvans = vansData.map(van => { //here I am just using the full vans data array that we fetched in App.jsx rather than making another API call
     if(van.hostId == 77) {
@@ -16,7 +15,6 @@ export default function HostVans({vansData}) {
             </div>
           </div>
         </Link>
-
       )
     }
   })

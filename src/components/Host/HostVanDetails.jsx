@@ -11,9 +11,9 @@ export default function HostVanDetails({vansData}) {
         <div className={s.top}>
           <img src={van.imageUrl} className={s.img}></img>
           <div>
-            <p>style</p>
-            <p>name</p>
-            <p>price</p>
+            <p>{van.type}</p>
+            <p>{van.name}</p>
+            <p>{van.price}</p>
           </div>
         </div>
         <nav>
@@ -22,7 +22,7 @@ export default function HostVanDetails({vansData}) {
           <Link to={`/host/vans/${id}/photos`}>Photos</Link>
         </nav>
       </div>
-      <Outlet />
+      <Outlet context={van}/>
     </>
 
   )

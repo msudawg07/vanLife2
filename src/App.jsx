@@ -12,6 +12,9 @@ import Income from './components/Host/Income'
 import HostVans from './components/Host/HostVans'
 import HostVanDetails from './components/Host/HostVanDetails'
 import Reviews from './components/Host/Reviews'
+import Details from './components/Host/HostVanDetailsNav/Details'
+import Pricing from './components/Host/HostVanDetailsNav/Pricing'
+import Photos from './components/Host/HostVanDetailsNav/Photos'
 
 function App() {
   const [vans, setVans] = useState([])
@@ -39,9 +42,9 @@ function App() {
             <Route path='income' element={<Income />} />
             <Route path='vans' element={<HostVans vansData={vans}/>} />
             <Route path='vans/:id' element={<HostVanDetails vansData={vans}/>} >
-              <Route index></Route>
-              <Route path='pricing'></Route>
-              <Route path='photos'></Route>
+              <Route index element={<Details />}></Route>
+              <Route path='pricing' element={<Pricing />}></Route>
+              <Route path='photos' element={<Photos />}></Route>
             </Route>
             <Route path='reviews' element={<Reviews />} />
           </Route>
