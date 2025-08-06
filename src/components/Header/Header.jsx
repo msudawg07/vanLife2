@@ -14,6 +14,7 @@ export default function Header() {
         <NavLink className={navFocus} to='/host'>Host</NavLink>
         <NavLink className={navFocus} to='/about'>About</NavLink>
         <NavLink className={navFocus} to='/vans'>Vans</NavLink>
+        <NavLink className={navFocus} to='/login'>Login</NavLink>
       </div>
     </nav>
   )

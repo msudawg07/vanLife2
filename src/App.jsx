@@ -4,6 +4,7 @@ import './App.css'
 import Home from './components/Home/Home'
 import About from './components/About/About'
 import Vans from './components/Vans/Vans'
+import Login from './components/Login/Login'
 import VanPage from './components/VanPage/VanPage'
 import Layout from './components/Layout/Layout'
 import HostPageLayout from './components/Host/HostPageLayout'
@@ -15,6 +16,7 @@ import Reviews from './components/Host/Reviews'
 import Details from './components/Host/HostVanDetailsNav/Details'
 import Pricing from './components/Host/HostVanDetailsNav/Pricing'
 import Photos from './components/Host/HostVanDetailsNav/Photos'
+import PageNotFound from './components/PageNotFound/PageNotFound'
 
 function App() {
   const [vans, setVans] = useState([])
@@ -35,7 +37,8 @@ function App() {
           <Route index element={<Home />} />
           <Route path='about' element={<About />} />
           <Route path='vans' element={<Vans vansData={vans} loading={loading}/>} />
-          <Route path='vans/:id' element={<VanPage />} />
+          <Route path='vans/:id' element={<VanPage vansData={vans}/>} />
+          <Route path='login' element={<Login/>} />
 
           <Route path='host' element={<HostPageLayout />}>
             <Route index element={<Dashboard />} />
@@ -48,6 +51,7 @@ function App() {
             </Route>
             <Route path='reviews' element={<Reviews />} />
           </Route>
+          <Route path='*' element={<PageNotFound />}/>
         </Route>
       </Routes>
     </BrowserRouter>

@@ -18,6 +18,7 @@ export default function HostVans({vansData}) {
       )
     }
   })
+
   return (
     <>
       <h1>Your listed Vans</h1>
