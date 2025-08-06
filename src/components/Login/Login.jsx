@@ -1,12 +1,24 @@
 import { useState } from 'react'
+import {useLocation} from 'react-router-dom'
 
 export default function Login() {
 
   const [formData, setFormData] = useState({email:'', password:''})
 
+  const messFromAuth = useLocation()
+  const authMessage = messFromAuth.state?.mess ?
+  <h2>{messFromAuth.state.mess}</h2> : null
+
   function handleSubmit(e) {
     e.preventDefault()
-    console.log(formData)
+    //console.log(formData)
+
+    fetch('http://localhost:3001/api/login', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify(formData)
+    })
+
   }
 
   function handleChange(e) {
@@ -18,6 +30,7 @@ export default function Login() {
 
   return (
     <>
+    {authMessage}
      <h1>Sign in to your account</h1>
      <form onSubmit={handleSubmit}>
         <input

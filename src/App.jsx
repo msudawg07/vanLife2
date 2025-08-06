@@ -17,6 +17,7 @@ import Details from './components/Host/HostVanDetailsNav/Details'
 import Pricing from './components/Host/HostVanDetailsNav/Pricing'
 import Photos from './components/Host/HostVanDetailsNav/Photos'
 import PageNotFound from './components/PageNotFound/PageNotFound'
+import HostAuth from './components/HostAuth/HostAuth'
 
 function App() {
   const [vans, setVans] = useState([])
@@ -40,17 +41,21 @@ function App() {
           <Route path='vans/:id' element={<VanPage vansData={vans}/>} />
           <Route path='login' element={<Login/>} />
 
-          <Route path='host' element={<HostPageLayout />}>
-            <Route index element={<Dashboard />} />
-            <Route path='income' element={<Income />} />
-            <Route path='vans' element={<HostVans vansData={vans}/>} />
-            <Route path='vans/:id' element={<HostVanDetails vansData={vans}/>} >
-              <Route index element={<Details />}></Route>
-              <Route path='pricing' element={<Pricing />}></Route>
-              <Route path='photos' element={<Photos />}></Route>
+          <Route element={<HostAuth />}>
+            <Route path='host' element={<HostPageLayout />}>
+              <Route index element={<Dashboard />} />
+              <Route path='income' element={<Income />} />
+              <Route path='vans' element={<HostVans vansData={vans}/>} />
+              <Route path='vans/:id' element={<HostVanDetails vansData={vans}/>} >
+                <Route index element={<Details />}></Route>
+                <Route path='pricing' element={<Pricing />}></Route>
+                <Route path='photos' element={<Photos />}></Route>
+              </Route>
+              <Route path='reviews' element={<Reviews />} />
             </Route>
-            <Route path='reviews' element={<Reviews />} />
           </Route>
+
+
           <Route path='*' element={<PageNotFound />}/>
         </Route>
       </Routes>
