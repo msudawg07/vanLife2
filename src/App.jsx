@@ -22,6 +22,7 @@ import HostAuth from './components/HostAuth/HostAuth'
 function App() {
   const [vans, setVans] = useState([])
   const [loading, setLoading] = useState(true) //use this for loading screen if necessaary - for now vansData is working in Vans.jsx
+  const [authentication, setAuthentication] = useState(false)
 
   useEffect(() => {
     fetch('http://localhost:3001/api/vans')
@@ -39,9 +40,9 @@ function App() {
           <Route path='about' element={<About />} />
           <Route path='vans' element={<Vans vansData={vans} loading={loading}/>} />
           <Route path='vans/:id' element={<VanPage vansData={vans}/>} />
-          <Route path='login' element={<Login/>} />
+          <Route path='login' element={<Login setAuth={setAuthentication}/>} />
 
-          <Route element={<HostAuth />}>
+          <Route element={<HostAuth authenticated={authentication}/>}>
             <Route path='host' element={<HostPageLayout />}>
               <Route index element={<Dashboard />} />
               <Route path='income' element={<Income />} />

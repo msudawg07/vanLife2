@@ -23,7 +23,17 @@ app.get('/api/vans/:id', (req, res) => {
 })
 
 app.post('/api/login', (req, res) => {
-  console.log(req.body)
+  const {email, password} = req.body
+  db.get('SELECT * FROM users WHERE email = ?', [email], (err, row) => {
+    if(!row) {
+      return res.json('Email does not exist')
+    }
+    if(password != row.password) {
+      res.json(`No Match`)
+    } else {
+      res.json(`Match`)
+    }
+  })
 })
 
 // app.get('/api/tasks', (req, res) => {

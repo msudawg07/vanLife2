@@ -1,9 +1,13 @@
 import { useState } from 'react'
-import {useLocation} from 'react-router-dom'
+import {useLocation, useNavigate} from 'react-router-dom'
 
-export default function Login() {
+export default function Login({setAuth}) {
+
+  let location = useLocation();
+  let from = location.state?.from?.pathname || "/host";
 
   const [formData, setFormData] = useState({email:'', password:''})
+  const navigate = useNavigate()
 
   const messFromAuth = useLocation()
   const authMessage = messFromAuth.state?.mess ?
@@ -17,8 +21,13 @@ export default function Login() {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify(formData)
-    })
-
+    }).then(res => res.json())
+      .then(data => {
+        if(data =='Match') {
+          setAuth(true)
+          navigate(from, {replace: true})
+        }
+      })
   }
 
   function handleChange(e) {
